@@ -23,12 +23,12 @@ const cors = require("cors")
 
 
 const router = express.Router()
-router.get('/death', cors(), function(req, res) {
-  
 
+
+router.get('/death', cors(), function(req, res) {
 
 const csvtojson = require('csvtojson');
-    const csvfilepath = "csv/covid19-confirmed.csv"
+    const csvfilepath = "csv/covid19-death.csv"
     csvtojson()
         .fromFile(csvfilepath)
         .then((json) => {
@@ -38,10 +38,41 @@ const csvtojson = require('csvtojson');
 
         })
 
-
-
-    
 });
+
+
+
+router.get('/confirmed', cors(), function(req, res) {
+    
+    const csvtojson = require('csvtojson');
+        const csvfilepath = "csv/covid19-confirmed.csv"
+        csvtojson()
+            .fromFile(csvfilepath)
+            .then((json) => {
+    
+    
+                return res.send(json)
+    
+            })
+    
+    });
+
+
+
+    router.get('/recovered', cors(), function(req, res) {
+    
+        const csvtojson = require('csvtojson');
+            const csvfilepath = "csv/covid19-recovered.csv"
+            csvtojson()
+                .fromFile(csvfilepath)
+                .then((json) => {
+        
+        
+                    return res.send(json)
+        
+                })
+        
+        });
 
 
 
