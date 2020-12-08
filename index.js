@@ -1,10 +1,9 @@
 
 
-
 const express = require("express")
 const bodyParser = require("body-parser")
 
-
+const cors = require("cors")
 
 //**************************************************** */
 
@@ -23,12 +22,11 @@ const bodyParser = require("body-parser")
 //***************************************************** */
 
 
-
-
-
-
 const router = express.Router()
-router.get("/confirmed", (req, res, next) => {
+router.get('/death', cors(), function(req, res) {
+  
+
+
 const csvtojson = require('csvtojson');
     const csvfilepath = "csv/covid19-confirmed.csv"
     csvtojson()
@@ -39,32 +37,56 @@ const csvtojson = require('csvtojson');
             return res.send(json)
 
         })
-})
 
-router.get("/death", (req, res, next) => {
-    const csvtojson = require('csvtojson');
-        const csvfilepath = "csv/covid19-death.csv"
-        csvtojson()
-            .fromFile(csvfilepath)
-            .then((json) => {
+
+
     
+});
+
+
+
+
+//**************************************************** */
+
+
+// const router = express.Router()
+// router.get("/confirmed", (req, res, next) => {
+// const csvtojson = require('csvtojson');
+//     const csvfilepath = "csv/covid19-confirmed.csv"
+//     csvtojson()
+//         .fromFile(csvfilepath)
+//         .then((json) => {
+
+
+//             return res.send(json)
+
+//         })
+// })
+
+// router.get("/death", (req, res, next) => {
+//     const csvtojson = require('csvtojson');
+//         const csvfilepath = "csv/covid19-death.csv"
+//         csvtojson()
+//             .fromFile(csvfilepath)
+//             .then((json) => {
     
-                return res.send(json)
+                
+//                 return res.send(json)
     
-            })
-    })
-    router.get("/recovered", (req, res, next) => {
-        const csvtojson = require('csvtojson');
-            const csvfilepath = "csv/covid19-recovered.csv"
-            csvtojson()
-                .fromFile(csvfilepath)
-                .then((json) => {
+//             })
+//     })
+//     router.get("/recovered", (req, res, next) => {
+//         const csvtojson = require('csvtojson');
+//             const csvfilepath = "csv/covid19-recovered.csv"
+//             csvtojson()
+//                 .fromFile(csvfilepath)
+//                 .then((json) => {
         
         
-                    return res.send(json)
+//                     return res.send(json)
         
-                })
-        })
+//                 })
+//         })
 
 
 
